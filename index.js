@@ -338,9 +338,24 @@ function sendText(res, status, text) {
 }
 
 /** Reject writes a foreign page could trigger; loopback reads stay open. */
+/**
+ * Reject cross-site writes. `sec-fetch-site` covers every current browser;
+ * `Origin` is the belt-and-braces check for anything that omits it. A request
+ * carrying neither header is local tooling (curl, the self-test), not a web page.
+ */
 function isForeignRequest(req) {
   const site = req.headers['sec-fetch-site']
-  return typeof site === 'string' && site === 'cross-site'
+  if (typeof site === 'string' && site === 'cross-site') return true
+  const origin = req.headers.origin
+  if (typeof origin === 'string' && origin !== '') {
+    try {
+      const host = new URL(origin).hostname
+      if (host !== '127.0.0.1' && host !== 'localhost' && host !== '[::1]' && host !== '::1') return true
+    } catch (error) {
+      return true
+    }
+  }
+  return false
 }
 
 function readJsonBody(req, limit) {

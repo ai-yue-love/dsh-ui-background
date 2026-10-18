@@ -1,6 +1,6 @@
 {
   "name": "dsh-ui-background",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Local image/video wallpaper plus a token-based frosted-glass UI for the DeepSeek Harness Web client.",
   "license": "MIT",
   "author": "ai-yue-love",
