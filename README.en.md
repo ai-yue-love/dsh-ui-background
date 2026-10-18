@@ -44,10 +44,10 @@ Then open Settings → **Background & Glass**.
 
 ## When this fits
 
-- You just want a local image or video behind the UI, with translucent panels, without installing a rendering engine for it
-- You do not want to re-frame after every switch: each history entry keeps its zoom and position
+- You want a local image or video behind the UI, with the panels translucent
+- You do not want to re-frame after a switch: each history entry keeps its zoom and position
 
-What it does not do: render Wallpaper Engine scenes. `scene.pkg` needs WE's own engine; this plugin only reads image and video files.
+What it cannot do: render Wallpaper Engine scenes. `scene.pkg` needs WE's own engine; this plugin only reads image and video files.
 ## Limitations
 
 | Limitation | Why |
