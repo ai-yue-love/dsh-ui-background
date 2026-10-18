@@ -57,6 +57,23 @@ html[data-dsh-bg="on"] body[data-ds-dark-theme] [role="dialog"] {
   --dsw-alias-bg-overlay: rgba(97, 102, 107, 0.97);
 }
 
+/* 指令面板 / 下拉列表：它们自己没有底色，会直接透出背景。
+   与对话框同样处理：抬令牌 + 补一层模糊。 */
+html[data-dsh-bg-kind] [role="listbox"] {
+  --dsw-alias-bg-base: rgba(255, 255, 255, 0.94);
+  --dsw-alias-bg-layer-1: rgba(255, 255, 255, 0.96);
+  --dsw-alias-bg-layer-2: rgba(255, 255, 255, 0.96);
+  --dsw-alias-bg-overlay: rgba(255, 255, 255, 0.97);
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px) saturate(1.05);
+}
+html[data-dsh-bg-kind] body[data-ds-dark-theme] [role="listbox"] {
+  --dsw-alias-bg-base: rgba(21, 21, 23, 0.94);
+  --dsw-alias-bg-layer-1: rgba(35, 35, 36, 0.96);
+  --dsw-alias-bg-layer-2: rgba(44, 44, 46, 0.96);
+  --dsw-alias-bg-overlay: rgba(97, 102, 107, 0.97);
+  background-color: rgba(21, 21, 23, 0.94);
+}
 /*
  * 输入区底托：压在滚动中的聊天文字上。
  * 图片背景：用背景模糊挡掉文字，同时保留壁纸的光感（不再糊一层白）。
