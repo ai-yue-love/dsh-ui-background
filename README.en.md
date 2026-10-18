@@ -42,16 +42,12 @@ dsh plugin --profile web add dsh-ui-background
 
 Then open Settings → **Background & Glass**.
 
-## How it differs from Wallpaper Engine plugins
+## When this fits
 
-| | This plugin | Wallpaper Engine based plugins |
-|---|---|---|
-| Sources | any local image or video; it can also list directly playable Steam Workshop items | primarily WE scene projects |
-| Prerequisites | none — Wallpaper Engine is not required | Wallpaper Engine and its assets |
-| Re-framing after a switch | not needed: each history entry stores its framing (cover/contain, zoom, horizontal/vertical position) | depends on the implementation |
-| Effect on the page | overrides the official `--dsw-*` theme tokens only; no DOM scanning, no per-frame work | some rewrite the DOM structure |
+- You just want a local image or video behind the UI, with translucent panels, without installing a rendering engine for it
+- You do not want to re-frame after every switch: each history entry keeps its zoom and position
 
-To be explicit about the boundary: `dsh-wallpaper-engine` can actually **render** Wallpaper Engine scenes, which this plugin cannot — `scene.pkg` requires WE's own engine. This plugin does not compete on rendering; it does one thing: stay lightweight, non-invasive, and token-based.
+What it does not do: render Wallpaper Engine scenes. `scene.pkg` needs WE's own engine; this plugin only reads image and video files.
 ## Limitations
 
 | Limitation | Why |
