@@ -79,18 +79,19 @@ html[data-dsh-bg-kind] body[data-ds-dark-theme] [role="listbox"] {
  * 图片背景：用背景模糊挡掉文字，同时保留壁纸的光感（不再糊一层白）。
  * 视频背景：不加模糊（省 GPU），只抬一点不透明度。
  */
-html[data-dsh-bg-kind="image"] [data-composer-seat] {
-  --dsw-alias-bg-base: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(18px) saturate(1.05);
+/*
+ * 输入框卡片：只给「卡片」上底色，不碰它外面那块 seat。
+ * seat 在首页包住"标题 + 输入框"整块，给它上底色/模糊会变成一条随输入框伸缩的雾带。
+ * 挡字靠不透明度，不靠模糊。
+ */
+html[data-dsh-bg-kind] [data-composer-card] {
+  --dsw-alias-bg-base: rgba(255, 255, 255, 0.86);
+  --dsw-alias-bg-layer-1: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(var(--dsh-bg-blur, 0px)) saturate(1.04);
 }
-html[data-dsh-bg-kind="image"] body[data-ds-dark-theme] [data-composer-seat] {
-  --dsw-alias-bg-base: rgba(21, 21, 23, 0.5);
-}
-html[data-dsh-bg-kind="video"] [data-composer-seat] {
-  --dsw-alias-bg-base: rgba(255, 255, 255, 0.72);
-}
-html[data-dsh-bg-kind="video"] body[data-ds-dark-theme] [data-composer-seat] {
-  --dsw-alias-bg-base: rgba(21, 21, 23, 0.74);
+html[data-dsh-bg-kind] body[data-ds-dark-theme] [data-composer-card] {
+  --dsw-alias-bg-base: rgba(24, 24, 26, 0.86);
+  --dsw-alias-bg-layer-1: rgba(35, 35, 37, 0.9);
 }
 `
 
@@ -544,6 +545,7 @@ html[data-dsh-bg-kind="video"] body[data-ds-dark-theme] [data-composer-seat] {
           return
         }
 
+        root.style.setProperty('--dsh-bg-blur', `${value.blur}px`)
         root.setAttribute('data-dsh-bg', 'on')
         root.setAttribute('data-dsh-bg-kind', kind)
         disposeTokenLayer()
