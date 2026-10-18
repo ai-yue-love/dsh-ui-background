@@ -1,8 +1,17 @@
 # dsh-ui-background
 
+[![npm version](https://img.shields.io/npm/v/dsh-ui-background.svg)](https://www.npmjs.com/package/dsh-ui-background)
+[![license](https://img.shields.io/npm/l/dsh-ui-background.svg)](./LICENSE)
+[![node](https://img.shields.io/badge/node-%E2%89%A522.19-339933)](https://nodejs.org)
+
 给 **DeepSeek Harness Web 客户端**加一层本地背景（图片 / 视频）+ 全界面毛玻璃。
 
-> 状态：`0.8.0`，在 **DSH 0.2.0-rc.2** 上开发与验证。RC 阶段内部契约会变，升级 DSH 后请重新验收。
+```bash
+dsh plugin --profile web add dsh-ui-background
+```
+
+> 装完**必须重启一次 Host**（DSH 的模块解析表在启动时构建）。
+> 状态：`0.8.2`，在 **DSH 0.2.0-rc.2** 上开发与验证。RC 阶段内部契约会变，升级 DSH 后请重新验收。
 
 ## 它是什么（以及为什么不卡）
 
